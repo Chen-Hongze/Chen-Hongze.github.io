@@ -1,11 +1,436 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <titlePersonal Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chen Hongze | Personal Homepage</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav h1 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+      padding: 56px 0;
+    }
+
+    .hero-card,
+    .profile-card,
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 42px;
+    }
+
+    .hero-card h2 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--primary);
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .profile-card {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    .profile-card h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    section {
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    section h2 {
+      font-size: 26px;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      background: #ffffff;
+    }
+
+    .item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .item p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid var(--primary);
+      padding-left: 16px;
+    }
+
+    .timeline-item h3 {
+      font-size: 18px;
+    }
+
+    .timeline-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .list {
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 24px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 32px 0;
+      }
+
+      .hero-card h2 {
+        font-size: 34px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Hello！</h1>
+  <header>
+    <nav class="nav">
+      <h1>Chen Hongze</h1>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#sharing">Knowledge Sharing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <div class="hero-card">
+        <h2>Hello, I am Chen Hongze.</h2>
+        <p>
+          I am interested in artificial intelligence, medical image analysis,
+          deep learning, and practical software development. This homepage
+          records my research work, project experience, and knowledge sharing.
+        </p>
+
+        <div class="tag-list">
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Medical Imaging</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Python</span>
+          <span class="tag">Research</span>
+        </div>
+
+        <div class="buttons">
+          <a class="btn" href="#research">View Research</a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="avatar">CH</div>
+        <h3>Chen Hongze</h3>
+        <p>AI Researcher / Student / Developer</p>
+        <p style="margin-top: 12px;">
+          Focused on building clear, reliable, and practical AI solutions.
+        </p>
+      </div>
+    </div>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am currently exploring artificial intelligence and its applications in
+        real-world problems. My main interests include computer vision, medical
+        image classification, model evaluation, and small-sample deep learning.
+        I also enjoy turning research ideas into complete experimental pipelines
+        and practical software systems.
+      </p>
+    </section>
+
+    <section id="research">
+      <h2>Research Achievements</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Medical Image Classification Research</h3>
+          <span>Deep learning / MRI / Small-sample learning</span>
+          <p>
+            Built study-level classification pipelines for medical image data,
+            focusing on leakage control, patient-level evaluation, model
+            robustness, and interpretable experimental design.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Dual-view Fusion Modeling</h3>
+          <span>Computer vision / Multi-view learning</span>
+          <p>
+            Explored fusion strategies for combining different medical imaging
+            views, including feature-level fusion, auxiliary supervision, and
+            patient-level prediction.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Knowledge Graph and Case-based Reasoning</h3>
+          <span>Knowledge representation / Rule retrieval</span>
+          <p>
+            Studied how knowledge graphs and case-based reasoning can be used
+            for structured rule retrieval, evidence-chain generation, and
+            interpretable decision support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+
+      <div class="grid">
+        <div class="item">
+          <h3>Meniscus MRI Classification</h3>
+          <p>
+            A deep learning project for classifying meniscus injury from MRI
+            images with strict patient-level data splitting and evaluation.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3>Garbage Classification System</h3>
+          <p>
+            A PyQt-based image classification system using a trained deep
+            learning model to identify different types of waste images.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3>Rule Retrieval Framework</h3>
+          <p>
+            A research framework combining knowledge graph construction,
+            structural rule modeling, and case-based retrieval methods.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sharing">
+      <h2>Knowledge Sharing</h2>
+
+      <p>
+        I use this space to organize and share notes about programming,
+        research methods, model training, academic writing, and project
+        development.
+      </p>
+
+      <ul class="list">
+        <li>Deep learning experiment design and model comparison</li>
+        <li>Small-sample training strategies and cross-validation</li>
+        <li>Medical image classification pipeline construction</li>
+        <li>Python, PyTorch, and practical project development</li>
+        <li>Research proposal writing and academic report structure</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <p>
+        You can find my work and updates through the following links:
+      </p>
+
+      <ul class="list">
+        <li>GitHub: <a href="https://github.com/Chen-Hongze" target="_blank">github.com/Chen-Hongze</a></li>
+        <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+        <li>Personal Homepage: <a href="https://Chen-Hongze.github.io" target="_blank">Chen-Hongze.github.io</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Chen Hongze. Built with GitHub Pages.
+  </footer>
 </body>
 </html>
